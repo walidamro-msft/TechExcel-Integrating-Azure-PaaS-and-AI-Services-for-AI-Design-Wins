@@ -215,7 +215,7 @@ module apiManagementService 'app/apim.bicep' = {
   scope: rg
   name: 'apiManagementService'
   params: {
-    location: location
+    location: 'eastus2'
     apimPublisherEmail: apimPublisherEmail
     tags: tags
     apiManagementServiceName: apiManagementServiceName
