@@ -7,8 +7,16 @@ st.set_page_config(layout="wide")
 def get_hotels():
     """Return a list of hotels from the API."""
     api_endpoint = st.secrets["api"]["endpoint"]
-    response = requests.get(f"{api_endpoint}/Hotels", timeout=10)
-    return response
+    try:
+        response = requests.get(f"{api_endpoint}/Hotels", timeout=10)
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
+        return response.json()  # Parse JSON if the response is valid
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error fetching hotels: {e}")
+        return []  # Return an empty list in case of an error
+    except ValueError:
+        st.error("Invalid JSON response from the API.")
+        return []  # Return an empty list if JSON decoding fails
 
 @st.cache_data
 def get_hotel_bookings(hotel_id):
