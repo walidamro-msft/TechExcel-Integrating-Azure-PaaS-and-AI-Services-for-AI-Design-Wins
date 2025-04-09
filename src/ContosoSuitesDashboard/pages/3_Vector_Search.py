@@ -52,7 +52,7 @@ def main():
     with col1:
         query = st.text_input("Search query:", key="query")
     with col2:
-        max_results = st.text_input("Max results (<=0 will return all results):", key="max_results", value=0)
+        max_results = int(st.text_input("Max results (<=0 will return all results):", key="max_results", value=0))
 
     minimum_similarity_score = st.slider("Minimum Similarity Score:", min_value=0.0, max_value=1.0, value=0.8, step=0.01)
     
