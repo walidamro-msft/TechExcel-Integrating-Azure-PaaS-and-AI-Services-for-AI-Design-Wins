@@ -18,7 +18,14 @@ def handle_vector_search(query_vector, max_results=5, minimum_similarity_score=0
         "max_results": max_results,
         "minimum_similarity_score": minimum_similarity_score
     }
-    response = requests.post(f"{api_endpoint}/VectorSearch", json=payload, headers=headers, timeout=10, verify=False)
+    # Print to the screen the payload that will be sent to the API
+    st.write("## Payload")
+    st.write(payload)
+    # PRint the URL that will be used to call the API
+    st.write("## URL")
+    st.write(f"{api_endpoint}/VectorSearch")
+
+    response = requests.post(f"{api_endpoint}/VectorSearch", json=payload, headers=headers, timeout=60, verify=False)
     return response
 
 def main():
