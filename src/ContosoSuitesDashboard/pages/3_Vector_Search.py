@@ -50,9 +50,23 @@ def main():
                 # Vectorize the query text.
                 # Exercise 3 Task 3 TODO #4: Get the vectorized query text by calling handle_query_vectorization.
                 query_vector = handle_query_vectorization(query)
+
+                # Print the vectorized query text to the screen
+                st.write("## Vectorized Query")
+                st.write(query_vector)
+
+                st.write("## Vector Search Parameters")
+                st.write(f"Max Results: {max_results}") 
+                st.write(f"Minimum Similarity Score: {minimum_similarity_score}")
+
                 # Perform the vector search.
                 # Exercise 3 Task 3 TODO #5: Get the vector search results by calling handle_vector_search.
                 vector_search_results = handle_vector_search(query_vector, max_results, minimum_similarity_score)
+
+                #Print the vector search results to the screen
+                st.write("## Vector Search Results")
+                st.write(vector_search_results.json())
+
                 # Display the results.
                 st.write("## Results")
                 # Exercise 3 Task 3 TODO #6: Display the results as a table.
