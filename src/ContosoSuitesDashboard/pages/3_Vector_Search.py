@@ -65,7 +65,7 @@ def main():
 
                 #Print the vector search results to the screen
                 st.write("## Vector Search Results")
-                st.write(vector_search_results.json())
+                st.write(vector_search_results.text)
 
                 # Display the results.
                 st.write("## Results")
